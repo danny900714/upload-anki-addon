@@ -7,12 +7,18 @@
   "author": "",
   "type": "module",
   "scripts": {
+    "generate": "buf generate",
     "build": "rolldown -c",
     "test": "vitest",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.12.0"
+  },
   "devDependencies": {
+    "@bufbuild/buf": "^1.70.0",
+    "@bufbuild/protoc-gen-es": "^2.12.0",
     "@tsconfig/node24": "^24.0.4",
     "oxfmt": "^0.54.0",
     "rolldown": "^1.1.0",
