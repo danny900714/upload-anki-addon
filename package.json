@@ -1,0 +1,28 @@
+{
+  "name": "upload-anki-addon",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c",
+    "test": "vitest",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "oxfmt": "^0.54.0",
+    "rolldown": "^1.1.0",
+    "vitest": "^4.1.8"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.5.2",
+      "onFail": "download"
+    }
+  }
+}
