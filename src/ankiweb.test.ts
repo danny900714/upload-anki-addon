@@ -1,5 +1,12 @@
-import { describe, test } from "vitest";
-import { uploadAddon } from "./ankiweb.js";
+import { describe, expect, test } from "vitest";
+import { login, uploadAddon } from "./ankiweb.js";
+
+describe("login", () => {
+  test("should return ankiweb cookie", async () => {
+    const ankiwebCookie = await login(process.env.ANKIWEB_USERNAME, process.env.ANKIWEB_PASSWORD);
+    expect(ankiwebCookie).not.toBe("");
+  });
+});
 
 describe("uploadAddonRequest", () => {
   test("upload Anki addon to AnkiWeb", async () => {

@@ -14,8 +14,10 @@
     "format:check": "oxfmt --check"
   },
   "dependencies": {
+    "@actions/core": "^3.0.1",
     "@bufbuild/protobuf": "^2.12.0",
-    "header-generator": "^2.1.82"
+    "header-generator": "^2.1.82",
+    "undici": "^8.4.1"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.70.0",

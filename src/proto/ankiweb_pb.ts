@@ -2,15 +2,59 @@
 // @generated from file ankiweb.proto (package net.ankiweb, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file ankiweb.proto.
  */
 export const file_ankiweb: GenFile = /*@__PURE__*/
-  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiJhCgtBZGRvbkJyYW5jaBIYCgttaW5fdmVyc2lvbhgBIAEoDUgAiAEBEhgKC21heF92ZXJzaW9uGAIgASgFSAGIAQFCDgoMX21pbl92ZXJzaW9uQg4KDF9tYXhfdmVyc2lvbiLpAQoJQWRkb25JbmZvEhUKCGFkZG9uX2lkGAEgASgNSACIAQESEgoFdGl0bGUYAiABKAlIAYgBARIRCgR0YWdzGAMgASgJSAKIAQESGAoLc3VwcG9ydF91cmwYBCABKAlIA4gBARIYCgtkZXNjcmlwdGlvbhgFIAEoCUgEiAEBEioKCGJyYW5jaGVzGAYgAygLMhgubmV0LmFua2l3ZWIuQWRkb25CcmFuY2hCCwoJX2FkZG9uX2lkQggKBl90aXRsZUIHCgVfdGFnc0IOCgxfc3VwcG9ydF91cmxCDgoMX2Rlc2NyaXB0aW9uIlsKCUFkZG9uRmlsZRIVCgh6aXBfZGF0YRgBIAEoDEgAiAEBEhkKDGJyYW5jaF9pbmRleBgCIAEoDUgBiAEBQgsKCV96aXBfZGF0YUIPCg1fYnJhbmNoX2luZGV4InwKElVwbG9hZEFkZG9uUmVxdWVzdBIpCgRpbmZvGAEgASgLMhYubmV0LmFua2l3ZWIuQWRkb25JbmZvSACIAQESKQoEZmlsZRgCIAEoCzIWLm5ldC5hbmtpd2ViLkFkZG9uRmlsZUgBiAEBQgcKBV9pbmZvQgcKBV9maWxlIjkKE1VwbG9hZEFkZG9uUmVzcG9uc2USFQoIYWRkb25faWQYASABKA1IAIgBAUILCglfYWRkb25faWRiBnByb3RvMw");
+  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiUAoNTG9naW5SZXNwb25zZRIwCgZzdGF0dXMYASABKA4yIC5uZXQuYW5raXdlYi5Mb2dpblJlc3BvbnNlU3RhdHVzEg0KBXRva2VuGAIgASgJImEKC0FkZG9uQnJhbmNoEhgKC21pbl92ZXJzaW9uGAEgASgNSACIAQESGAoLbWF4X3ZlcnNpb24YAiABKAVIAYgBAUIOCgxfbWluX3ZlcnNpb25CDgoMX21heF92ZXJzaW9uIukBCglBZGRvbkluZm8SFQoIYWRkb25faWQYASABKA1IAIgBARISCgV0aXRsZRgCIAEoCUgBiAEBEhEKBHRhZ3MYAyABKAlIAogBARIYCgtzdXBwb3J0X3VybBgEIAEoCUgDiAEBEhgKC2Rlc2NyaXB0aW9uGAUgASgJSASIAQESKgoIYnJhbmNoZXMYBiADKAsyGC5uZXQuYW5raXdlYi5BZGRvbkJyYW5jaEILCglfYWRkb25faWRCCAoGX3RpdGxlQgcKBV90YWdzQg4KDF9zdXBwb3J0X3VybEIOCgxfZGVzY3JpcHRpb24iWwoJQWRkb25GaWxlEhUKCHppcF9kYXRhGAEgASgMSACIAQESGQoMYnJhbmNoX2luZGV4GAIgASgNSAGIAQFCCwoJX3ppcF9kYXRhQg8KDV9icmFuY2hfaW5kZXgifAoSVXBsb2FkQWRkb25SZXF1ZXN0EikKBGluZm8YASABKAsyFi5uZXQuYW5raXdlYi5BZGRvbkluZm9IAIgBARIpCgRmaWxlGAIgASgLMhYubmV0LmFua2l3ZWIuQWRkb25GaWxlSAGIAQFCBwoFX2luZm9CBwoFX2ZpbGUiOQoTVXBsb2FkQWRkb25SZXNwb25zZRIVCghhZGRvbl9pZBgBIAEoDUgAiAEBQgsKCV9hZGRvbl9pZCqxAQoTTG9naW5SZXNwb25zZVN0YXR1cxIhCh1MT0dJTl9SRVNQT05TRV9TVEFUVVNfVU5LTk9XThAAEicKI0xPR0lOX1JFU1BPTlNFX1NUQVRVU19BVVRIRU5USUNBVEVEEAESJgoiTE9HSU5fUkVTUE9OU0VfU1RBVFVTX0lOVkFMSURfVVNFUhACEiYKIkxPR0lOX1JFU1BPTlNFX1NUQVRVU19JTlZBTElEX1BBU1MQA2IGcHJvdG8z");
+
+/**
+ * @generated from message net.ankiweb.LoginRequest
+ */
+export type LoginRequest = Message<"net.ankiweb.LoginRequest"> & {
+  /**
+   * @generated from field: string username = 1;
+   */
+  username: string;
+
+  /**
+   * @generated from field: string password = 2;
+   */
+  password: string;
+};
+
+/**
+ * Describes the message net.ankiweb.LoginRequest.
+ * Use `create(LoginRequestSchema)` to create a new message.
+ */
+export const LoginRequestSchema: GenMessage<LoginRequest> = /*@__PURE__*/
+  messageDesc(file_ankiweb, 0);
+
+/**
+ * @generated from message net.ankiweb.LoginResponse
+ */
+export type LoginResponse = Message<"net.ankiweb.LoginResponse"> & {
+  /**
+   * @generated from field: net.ankiweb.LoginResponseStatus status = 1;
+   */
+  status: LoginResponseStatus;
+
+  /**
+   * @generated from field: string token = 2;
+   */
+  token: string;
+};
+
+/**
+ * Describes the message net.ankiweb.LoginResponse.
+ * Use `create(LoginResponseSchema)` to create a new message.
+ */
+export const LoginResponseSchema: GenMessage<LoginResponse> = /*@__PURE__*/
+  messageDesc(file_ankiweb, 1);
 
 /**
  * @generated from message net.ankiweb.AddonBranch
@@ -32,7 +76,7 @@ export type AddonBranch = Message<"net.ankiweb.AddonBranch"> & {
  * Use `create(AddonBranchSchema)` to create a new message.
  */
 export const AddonBranchSchema: GenMessage<AddonBranch> = /*@__PURE__*/
-  messageDesc(file_ankiweb, 0);
+  messageDesc(file_ankiweb, 2);
 
 /**
  * @generated from message net.ankiweb.AddonInfo
@@ -74,7 +118,7 @@ export type AddonInfo = Message<"net.ankiweb.AddonInfo"> & {
  * Use `create(AddonInfoSchema)` to create a new message.
  */
 export const AddonInfoSchema: GenMessage<AddonInfo> = /*@__PURE__*/
-  messageDesc(file_ankiweb, 1);
+  messageDesc(file_ankiweb, 3);
 
 /**
  * @generated from message net.ankiweb.AddonFile
@@ -96,7 +140,7 @@ export type AddonFile = Message<"net.ankiweb.AddonFile"> & {
  * Use `create(AddonFileSchema)` to create a new message.
  */
 export const AddonFileSchema: GenMessage<AddonFile> = /*@__PURE__*/
-  messageDesc(file_ankiweb, 2);
+  messageDesc(file_ankiweb, 4);
 
 /**
  * @generated from message net.ankiweb.UploadAddonRequest
@@ -118,7 +162,7 @@ export type UploadAddonRequest = Message<"net.ankiweb.UploadAddonRequest"> & {
  * Use `create(UploadAddonRequestSchema)` to create a new message.
  */
 export const UploadAddonRequestSchema: GenMessage<UploadAddonRequest> = /*@__PURE__*/
-  messageDesc(file_ankiweb, 3);
+  messageDesc(file_ankiweb, 5);
 
 /**
  * @generated from message net.ankiweb.UploadAddonResponse
@@ -135,5 +179,36 @@ export type UploadAddonResponse = Message<"net.ankiweb.UploadAddonResponse"> & {
  * Use `create(UploadAddonResponseSchema)` to create a new message.
  */
 export const UploadAddonResponseSchema: GenMessage<UploadAddonResponse> = /*@__PURE__*/
-  messageDesc(file_ankiweb, 4);
+  messageDesc(file_ankiweb, 6);
+
+/**
+ * @generated from enum net.ankiweb.LoginResponseStatus
+ */
+export enum LoginResponseStatus {
+  /**
+   * @generated from enum value: LOGIN_RESPONSE_STATUS_UNKNOWN = 0;
+   */
+  UNKNOWN = 0,
+
+  /**
+   * @generated from enum value: LOGIN_RESPONSE_STATUS_AUTHENTICATED = 1;
+   */
+  AUTHENTICATED = 1,
+
+  /**
+   * @generated from enum value: LOGIN_RESPONSE_STATUS_INVALID_USER = 2;
+   */
+  INVALID_USER = 2,
+
+  /**
+   * @generated from enum value: LOGIN_RESPONSE_STATUS_INVALID_PASS = 3;
+   */
+  INVALID_PASS = 3,
+}
+
+/**
+ * Describes the enum net.ankiweb.LoginResponseStatus.
+ */
+export const LoginResponseStatusSchema: GenEnum<LoginResponseStatus> = /*@__PURE__*/
+  enumDesc(file_ankiweb, 0);
 
