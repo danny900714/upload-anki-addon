@@ -10,11 +10,8 @@ import {
 import { create, fromBinary, MessageInitShape, toBinary } from "@bufbuild/protobuf";
 import { GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fetch, getSetCookies } from "undici";
-import { HeaderGenerator } from "header-generator";
 
-const headerGenerator = new HeaderGenerator();
 const defaultHeaders = {
-  ...headerGenerator.getHeaders(),
   accept: "*/*",
   "content-type": "application/octet-stream",
 };
