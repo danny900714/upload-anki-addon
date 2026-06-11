@@ -10,21 +10,21 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file ankiweb.proto.
  */
 export const file_ankiweb: GenFile = /*@__PURE__*/
-  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiI3CgtBZGRvbkJyYW5jaBITCgttaW5fdmVyc2lvbhgBIAEoDRITCgttYXhfdmVyc2lvbhgCIAEoBSKiAQoJQWRkb25JbmZvEhUKCGFkZG9uX2lkGAEgASgNSACIAQESDQoFdGl0bGUYAiABKAkSDAoEdGFncxgDIAEoCRITCgtzdXBwb3J0X3VybBgEIAEoCRITCgtkZXNjcmlwdGlvbhgFIAEoCRIqCghicmFuY2hlcxgGIAMoCzIYLm5ldC5hbmtpd2ViLkFkZG9uQnJhbmNoQgsKCV9hZGRvbl9pZCJJCglBZGRvbkZpbGUSEAoIemlwX2RhdGEYASABKAwSGQoMYnJhbmNoX2luZGV4GAIgASgNSACIAQFCDwoNX2JyYW5jaF9pbmRleCJuChJVcGxvYWRBZGRvblJlcXVlc3QSJAoEaW5mbxgBIAEoCzIWLm5ldC5hbmtpd2ViLkFkZG9uSW5mbxIpCgRmaWxlGAIgASgLMhYubmV0LmFua2l3ZWIuQWRkb25GaWxlSACIAQFCBwoFX2ZpbGUiJwoTVXBsb2FkQWRkb25SZXNwb25zZRIQCghhZGRvbl9pZBgBIAEoDWIGcHJvdG8z");
+  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiJhCgtBZGRvbkJyYW5jaBIYCgttaW5fdmVyc2lvbhgBIAEoDUgAiAEBEhgKC21heF92ZXJzaW9uGAIgASgFSAGIAQFCDgoMX21pbl92ZXJzaW9uQg4KDF9tYXhfdmVyc2lvbiLpAQoJQWRkb25JbmZvEhUKCGFkZG9uX2lkGAEgASgNSACIAQESEgoFdGl0bGUYAiABKAlIAYgBARIRCgR0YWdzGAMgASgJSAKIAQESGAoLc3VwcG9ydF91cmwYBCABKAlIA4gBARIYCgtkZXNjcmlwdGlvbhgFIAEoCUgEiAEBEioKCGJyYW5jaGVzGAYgAygLMhgubmV0LmFua2l3ZWIuQWRkb25CcmFuY2hCCwoJX2FkZG9uX2lkQggKBl90aXRsZUIHCgVfdGFnc0IOCgxfc3VwcG9ydF91cmxCDgoMX2Rlc2NyaXB0aW9uIlsKCUFkZG9uRmlsZRIVCgh6aXBfZGF0YRgBIAEoDEgAiAEBEhkKDGJyYW5jaF9pbmRleBgCIAEoDUgBiAEBQgsKCV96aXBfZGF0YUIPCg1fYnJhbmNoX2luZGV4InwKElVwbG9hZEFkZG9uUmVxdWVzdBIpCgRpbmZvGAEgASgLMhYubmV0LmFua2l3ZWIuQWRkb25JbmZvSACIAQESKQoEZmlsZRgCIAEoCzIWLm5ldC5hbmtpd2ViLkFkZG9uRmlsZUgBiAEBQgcKBV9pbmZvQgcKBV9maWxlIjkKE1VwbG9hZEFkZG9uUmVzcG9uc2USFQoIYWRkb25faWQYASABKA1IAIgBAUILCglfYWRkb25faWRiBnByb3RvMw");
 
 /**
  * @generated from message net.ankiweb.AddonBranch
  */
 export type AddonBranch = Message<"net.ankiweb.AddonBranch"> & {
   /**
-   * @generated from field: uint32 min_version = 1;
+   * @generated from field: optional uint32 min_version = 1;
    */
-  minVersion: number;
+  minVersion?: number | undefined;
 
   /**
-   * @generated from field: int32 max_version = 2;
+   * @generated from field: optional int32 max_version = 2;
    */
-  maxVersion: number;
+  maxVersion?: number | undefined;
 };
 
 /**
@@ -44,24 +44,24 @@ export type AddonInfo = Message<"net.ankiweb.AddonInfo"> & {
   addonId?: number | undefined;
 
   /**
-   * @generated from field: string title = 2;
+   * @generated from field: optional string title = 2;
    */
-  title: string;
+  title?: string | undefined;
 
   /**
-   * @generated from field: string tags = 3;
+   * @generated from field: optional string tags = 3;
    */
-  tags: string;
+  tags?: string | undefined;
 
   /**
-   * @generated from field: string support_url = 4;
+   * @generated from field: optional string support_url = 4;
    */
-  supportUrl: string;
+  supportUrl?: string | undefined;
 
   /**
-   * @generated from field: string description = 5;
+   * @generated from field: optional string description = 5;
    */
-  description: string;
+  description?: string | undefined;
 
   /**
    * @generated from field: repeated net.ankiweb.AddonBranch branches = 6;
@@ -81,9 +81,9 @@ export const AddonInfoSchema: GenMessage<AddonInfo> = /*@__PURE__*/
  */
 export type AddonFile = Message<"net.ankiweb.AddonFile"> & {
   /**
-   * @generated from field: bytes zip_data = 1;
+   * @generated from field: optional bytes zip_data = 1;
    */
-  zipData: Uint8Array;
+  zipData?: Uint8Array | undefined;
 
   /**
    * @generated from field: optional uint32 branch_index = 2;
@@ -103,7 +103,7 @@ export const AddonFileSchema: GenMessage<AddonFile> = /*@__PURE__*/
  */
 export type UploadAddonRequest = Message<"net.ankiweb.UploadAddonRequest"> & {
   /**
-   * @generated from field: net.ankiweb.AddonInfo info = 1;
+   * @generated from field: optional net.ankiweb.AddonInfo info = 1;
    */
   info?: AddonInfo | undefined;
 
@@ -125,9 +125,9 @@ export const UploadAddonRequestSchema: GenMessage<UploadAddonRequest> = /*@__PUR
  */
 export type UploadAddonResponse = Message<"net.ankiweb.UploadAddonResponse"> & {
   /**
-   * @generated from field: uint32 addon_id = 1;
+   * @generated from field: optional uint32 addon_id = 1;
    */
-  addonId: number;
+  addonId?: number | undefined;
 };
 
 /**
