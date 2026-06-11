@@ -1,0 +1,60 @@
+name: Upload Anki add-on to AnkiWeb
+description: Upload Anki add-on to AnkiWeb inside your GitHub Actions workflow.
+author: Tzu-Hsien Chao
+branding:
+  icon: upload
+  color: blue
+inputs:
+  username:
+    description: Your AnkiWeb account username. You can also set this as a secret and reference it in the workflow.
+    required: true
+  password:
+    description: Your AnkiWeb account password. You can also set this as a secret and reference it in the workflow.
+    required: true
+  addon-id:
+    description: The add-on ID (install code) of the add-on you want to update. If not provided, a new add-on will be created.
+    required: false
+    default: ""
+  title:
+    description: The title of the add-on. A one-line description, less than 80 characters.
+    required: true
+  tags:
+    description: The tags of the add-on. Space-separated.
+    required: false
+    default: ""
+  support-page:
+    description: A bug tracker, forum link, or some other webpage users can contact you. Must start with http.
+    required: false
+    default: ""
+  branches:
+    description: >
+      A list of branch notations separated by newline.
+
+      The branch notation is defined as <start-version>-<end-version>(+),
+      where <start-version> and <end-version> are Anki version numbers, 
+      and the optional + means the add-on is compatible with all future versions after <end-version>.
+
+      For example,
+      2.1.1-2.1.66 means the add-on is compatible with Anki versions from 2.1.1 to 2.1.66, inclusive;
+      23.10.0-25.09.4+ means the add-on is compatible with Anki versions from 23.10.0 to 25.09.4, inclusive, and all future versions after 25.09.4.
+    required: true
+  addon-files:
+    description: >
+      A list of paths to add-on file separated by newline.
+
+      The number of paths must be the same as the number of branches, and the order must correspond to each other.
+      If there's a branch you don't want to upload addon file, you can put a dash (-) in the corresponding line.
+
+      For example, if you want to upload addon file for the second branch but not the first branch, you can set addon-files like this:
+        -
+        path-to-addon-file.ankiaddon
+    required: true
+  description:
+    description: The description of the add-on. Markdown and basic HTML tags are supported.
+    required: true
+outputs:
+  addon-id:
+    description: The add-on ID of the uploaded add-on. You can use this ID to update the add-on in the future.
+runs:
+  using: node24
+  main: dist/index.js
