@@ -18,7 +18,7 @@ message AddonInfo {
 
 message AddonFile {
   bytes zip_data = 1;
-  uint32 branch_index = 2;
+  optional uint32 branch_index = 2;
 }
 
 message UploadAddonRequest {

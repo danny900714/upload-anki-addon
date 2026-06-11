@@ -14,12 +14,14 @@
     "format:check": "oxfmt --check"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^2.12.0"
+    "@bufbuild/protobuf": "^2.12.0",
+    "header-generator": "^2.1.82"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.70.0",
     "@bufbuild/protoc-gen-es": "^2.12.0",
     "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^25.9.2",
     "oxfmt": "^0.54.0",
     "rolldown": "^1.1.0",
     "vitest": "^4.1.8"

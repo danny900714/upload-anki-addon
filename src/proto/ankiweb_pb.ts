@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file ankiweb.proto.
  */
 export const file_ankiweb: GenFile = /*@__PURE__*/
-  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiI3CgtBZGRvbkJyYW5jaBITCgttaW5fdmVyc2lvbhgBIAEoDRITCgttYXhfdmVyc2lvbhgCIAEoBSKiAQoJQWRkb25JbmZvEhUKCGFkZG9uX2lkGAEgASgNSACIAQESDQoFdGl0bGUYAiABKAkSDAoEdGFncxgDIAEoCRITCgtzdXBwb3J0X3VybBgEIAEoCRITCgtkZXNjcmlwdGlvbhgFIAEoCRIqCghicmFuY2hlcxgGIAMoCzIYLm5ldC5hbmtpd2ViLkFkZG9uQnJhbmNoQgsKCV9hZGRvbl9pZCIzCglBZGRvbkZpbGUSEAoIemlwX2RhdGEYASABKAwSFAoMYnJhbmNoX2luZGV4GAIgASgNIm4KElVwbG9hZEFkZG9uUmVxdWVzdBIkCgRpbmZvGAEgASgLMhYubmV0LmFua2l3ZWIuQWRkb25JbmZvEikKBGZpbGUYAiABKAsyFi5uZXQuYW5raXdlYi5BZGRvbkZpbGVIAIgBAUIHCgVfZmlsZSInChNVcGxvYWRBZGRvblJlc3BvbnNlEhAKCGFkZG9uX2lkGAEgASgNYgZwcm90bzM");
+  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiI3CgtBZGRvbkJyYW5jaBITCgttaW5fdmVyc2lvbhgBIAEoDRITCgttYXhfdmVyc2lvbhgCIAEoBSKiAQoJQWRkb25JbmZvEhUKCGFkZG9uX2lkGAEgASgNSACIAQESDQoFdGl0bGUYAiABKAkSDAoEdGFncxgDIAEoCRITCgtzdXBwb3J0X3VybBgEIAEoCRITCgtkZXNjcmlwdGlvbhgFIAEoCRIqCghicmFuY2hlcxgGIAMoCzIYLm5ldC5hbmtpd2ViLkFkZG9uQnJhbmNoQgsKCV9hZGRvbl9pZCJJCglBZGRvbkZpbGUSEAoIemlwX2RhdGEYASABKAwSGQoMYnJhbmNoX2luZGV4GAIgASgNSACIAQFCDwoNX2JyYW5jaF9pbmRleCJuChJVcGxvYWRBZGRvblJlcXVlc3QSJAoEaW5mbxgBIAEoCzIWLm5ldC5hbmtpd2ViLkFkZG9uSW5mbxIpCgRmaWxlGAIgASgLMhYubmV0LmFua2l3ZWIuQWRkb25GaWxlSACIAQFCBwoFX2ZpbGUiJwoTVXBsb2FkQWRkb25SZXNwb25zZRIQCghhZGRvbl9pZBgBIAEoDWIGcHJvdG8z");
 
 /**
  * @generated from message net.ankiweb.AddonBranch
@@ -86,9 +86,9 @@ export type AddonFile = Message<"net.ankiweb.AddonFile"> & {
   zipData: Uint8Array;
 
   /**
-   * @generated from field: uint32 branch_index = 2;
+   * @generated from field: optional uint32 branch_index = 2;
    */
-  branchIndex: number;
+  branchIndex?: number | undefined;
 };
 
 /**
