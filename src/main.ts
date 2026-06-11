@@ -1,5 +1,5 @@
 import * as fs from "node:fs/promises";
-import { getInput, getMultilineInput, setFailed, setOutput, toPlatformPath } from "@actions/core";
+import * as core from "@actions/core";
 import { MessageInitShape } from "@bufbuild/protobuf";
 import { GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { AddonBranch } from "./proto/ankiweb_pb";
@@ -62,85 +62,108 @@ function parseBranchNotation(branch: string): MessageInitShape<GenMessage<AddonB
 
 function parseAddonFile(filePath: string) {
   if (filePath === "-") return null;
-  return toPlatformPath(filePath);
+  return core.toPlatformPath(filePath);
 }
 
 export default async function main() {
   // Get inputs
-  const username = getInput("username", { required: true });
-  const password = getInput("password", { required: true });
-  const addonIdInput = getInput("addon-id");
-  const title = getInput("title", { required: true });
-  const tags = getInput("tags");
-  const supportPage = getInput("support-page");
-  const branchesInput = getMultilineInput("branches", { required: true });
-  const addonFilesInput = getMultilineInput("addon-files", { required: true });
-  const description = getInput("description", { required: true });
+  const username = core.getInput("username", { required: true });
+  const password = core.getInput("password", { required: true });
+  const addonIdInput = core.getInput("addon-id");
+  const title = core.getInput("title", { required: true });
+  const tags = core.getInput("tags");
+  const supportPage = core.getInput("support-page");
+  const branchesInput = core.getMultilineInput("branches", { required: true });
+  const addonFilesInput = core.getMultilineInput("addon-files", { required: true });
+  const description = core.getInput("description", { required: true });
 
   try {
     // Convert addonId
     let addonId = addonIdInput === "" ? undefined : parseInt(addonIdInput, 10);
     if (addonId && Number.isNaN(addonId)) {
-      setFailed(`addon-id must be a valid integer. addon-id: ${addonIdInput}`);
+      core.setFailed(`addon-id must be a valid integer. addon-id: ${addonIdInput}`);
       return;
     }
 
     // Convert and validate branches
     const branches = branchesInput.map(parseBranchNotation);
     if (branches.length === 0) {
-      setFailed("At least one branch must be specified in branches.");
+      core.setFailed("At least one branch must be specified in branches.");
       return;
     }
 
     const addonFilesPath = addonFilesInput.map(parseAddonFile);
     if (addonFilesPath.length === 0) {
-      setFailed("At least one add-on file path must be specified in addon-files.");
+      core.setFailed("At least one add-on file path must be specified in addon-files.");
       return;
     }
     if (addonId === undefined && addonFilesPath.includes(null)) {
-      setFailed("If addon-id is not specified, all paths of addon-files must be specified.");
+      core.setFailed("If addon-id is not specified, all paths of addon-files must be specified.");
       return;
     }
     if (branches.length !== addonFilesPath.length) {
-      setFailed("The number of path of addon-files should be the same as the number of branches.");
+      core.setFailed(
+        "The number of path of addon-files should be the same as the number of branches.",
+      );
       return;
     }
 
     // Login to get ankiweb cookie
     const ankiwebCookie = await login(username, password);
+    core.info("Successfully login to AnkiWeb.");
 
-    // Upload the addon to ankiweb
-    for (let i = 0; i < addonFilesPath.length; i++) {
-      const addonFilePath = addonFilesPath[i];
+    if (addonFilesPath.every((path) => path === null)) {
+      // If all the path is null (meaning no file is uploaded), just upload the addon info once.
+      core.info("No path specified in addon-files. Only update addon info ...");
 
-      // Create addonFile if file path is not null
-      let addonFile;
-      if (addonFilePath !== null) {
-        const buffer = await fs.readFile(addonFilePath);
-        addonFile = {
-          zipData: buffer,
-          branchIndex: i,
-        };
+      addonId = await uploadAddon(ankiwebCookie, {
+        addonId,
+        title,
+        tags,
+        supportUrl: supportPage,
+        description,
+        branches,
+      });
+
+      core.info("Successfully updated addon info.");
+    } else {
+      // Upload all addon files specified in addon-files
+      for (let i = 0; i < addonFilesPath.length; i++) {
+        const addonFilePath = addonFilesPath[i];
+        if (addonFilePath !== null) {
+          const buffer = await fs.readFile(addonFilePath);
+          const addonFile = {
+            zipData: buffer,
+            branchIndex: i,
+          };
+
+          core.info(
+            `Find addon file in ${addonFilePath}. Uploading it to ${branchesInput[0]} branch ...`,
+          );
+
+          addonId = await uploadAddon(
+            ankiwebCookie,
+            {
+              addonId,
+              title,
+              tags,
+              supportUrl: supportPage,
+              description,
+              branches,
+            },
+            addonFile,
+          );
+
+          core.info(`Successfully uploaded addon file: ${addonFilePath}.`);
+        }
       }
-
-      addonId = await uploadAddon(
-        ankiwebCookie,
-        {
-          addonId,
-          title,
-          tags,
-          supportUrl: supportPage,
-          description,
-          branches,
-        },
-        addonFile,
-      );
     }
 
     // Set output
-    setOutput("addon-id", addonId);
+    core.setOutput("addon-id", addonId);
   } catch (error) {
-    setFailed(error as Error);
+    core.error(error as Error);
+    core.setFailed(error as Error);
     return;
   }
 }
