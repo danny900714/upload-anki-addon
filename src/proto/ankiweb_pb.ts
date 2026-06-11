@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file ankiweb.proto.
  */
 export const file_ankiweb: GenFile = /*@__PURE__*/
-  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiUAoNTG9naW5SZXNwb25zZRIwCgZzdGF0dXMYASABKA4yIC5uZXQuYW5raXdlYi5Mb2dpblJlc3BvbnNlU3RhdHVzEg0KBXRva2VuGAIgASgJImEKC0FkZG9uQnJhbmNoEhgKC21pbl92ZXJzaW9uGAEgASgNSACIAQESGAoLbWF4X3ZlcnNpb24YAiABKAVIAYgBAUIOCgxfbWluX3ZlcnNpb25CDgoMX21heF92ZXJzaW9uIukBCglBZGRvbkluZm8SFQoIYWRkb25faWQYASABKA1IAIgBARISCgV0aXRsZRgCIAEoCUgBiAEBEhEKBHRhZ3MYAyABKAlIAogBARIYCgtzdXBwb3J0X3VybBgEIAEoCUgDiAEBEhgKC2Rlc2NyaXB0aW9uGAUgASgJSASIAQESKgoIYnJhbmNoZXMYBiADKAsyGC5uZXQuYW5raXdlYi5BZGRvbkJyYW5jaEILCglfYWRkb25faWRCCAoGX3RpdGxlQgcKBV90YWdzQg4KDF9zdXBwb3J0X3VybEIOCgxfZGVzY3JpcHRpb24iWwoJQWRkb25GaWxlEhUKCHppcF9kYXRhGAEgASgMSACIAQESGQoMYnJhbmNoX2luZGV4GAIgASgNSAGIAQFCCwoJX3ppcF9kYXRhQg8KDV9icmFuY2hfaW5kZXgifAoSVXBsb2FkQWRkb25SZXF1ZXN0EikKBGluZm8YASABKAsyFi5uZXQuYW5raXdlYi5BZGRvbkluZm9IAIgBARIpCgRmaWxlGAIgASgLMhYubmV0LmFua2l3ZWIuQWRkb25GaWxlSAGIAQFCBwoFX2luZm9CBwoFX2ZpbGUiOQoTVXBsb2FkQWRkb25SZXNwb25zZRIVCghhZGRvbl9pZBgBIAEoDUgAiAEBQgsKCV9hZGRvbl9pZCqxAQoTTG9naW5SZXNwb25zZVN0YXR1cxIhCh1MT0dJTl9SRVNQT05TRV9TVEFUVVNfVU5LTk9XThAAEicKI0xPR0lOX1JFU1BPTlNFX1NUQVRVU19BVVRIRU5USUNBVEVEEAESJgoiTE9HSU5fUkVTUE9OU0VfU1RBVFVTX0lOVkFMSURfVVNFUhACEiYKIkxPR0lOX1JFU1BPTlNFX1NUQVRVU19JTlZBTElEX1BBU1MQA2IGcHJvdG8z");
+  fileDesc("Cg1hbmtpd2ViLnByb3RvEgtuZXQuYW5raXdlYiIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiUAoNTG9naW5SZXNwb25zZRIwCgZzdGF0dXMYASABKA4yIC5uZXQuYW5raXdlYi5Mb2dpblJlc3BvbnNlU3RhdHVzEg0KBXRva2VuGAIgASgJIjcKC0FkZG9uQnJhbmNoEhMKC21pbl92ZXJzaW9uGAEgASgNEhMKC21heF92ZXJzaW9uGAIgASgFIqIBCglBZGRvbkluZm8SFQoIYWRkb25faWQYASABKA1IAIgBARINCgV0aXRsZRgCIAEoCRIMCgR0YWdzGAMgASgJEhMKC3N1cHBvcnRfdXJsGAQgASgJEhMKC2Rlc2NyaXB0aW9uGAUgASgJEioKCGJyYW5jaGVzGAYgAygLMhgubmV0LmFua2l3ZWIuQWRkb25CcmFuY2hCCwoJX2FkZG9uX2lkIjMKCUFkZG9uRmlsZRIQCgh6aXBfZGF0YRgBIAEoDBIUCgxicmFuY2hfaW5kZXgYAiABKA0ibgoSVXBsb2FkQWRkb25SZXF1ZXN0EiQKBGluZm8YASABKAsyFi5uZXQuYW5raXdlYi5BZGRvbkluZm8SKQoEZmlsZRgCIAEoCzIWLm5ldC5hbmtpd2ViLkFkZG9uRmlsZUgAiAEBQgcKBV9maWxlIicKE1VwbG9hZEFkZG9uUmVzcG9uc2USEAoIYWRkb25faWQYASABKA0qsQEKE0xvZ2luUmVzcG9uc2VTdGF0dXMSIQodTE9HSU5fUkVTUE9OU0VfU1RBVFVTX1VOS05PV04QABInCiNMT0dJTl9SRVNQT05TRV9TVEFUVVNfQVVUSEVOVElDQVRFRBABEiYKIkxPR0lOX1JFU1BPTlNFX1NUQVRVU19JTlZBTElEX1VTRVIQAhImCiJMT0dJTl9SRVNQT05TRV9TVEFUVVNfSU5WQUxJRF9QQVNTEANiBnByb3RvMw");
 
 /**
  * @generated from message net.ankiweb.LoginRequest
@@ -61,14 +61,14 @@ export const LoginResponseSchema: GenMessage<LoginResponse> = /*@__PURE__*/
  */
 export type AddonBranch = Message<"net.ankiweb.AddonBranch"> & {
   /**
-   * @generated from field: optional uint32 min_version = 1;
+   * @generated from field: uint32 min_version = 1;
    */
-  minVersion?: number | undefined;
+  minVersion: number;
 
   /**
-   * @generated from field: optional int32 max_version = 2;
+   * @generated from field: int32 max_version = 2;
    */
-  maxVersion?: number | undefined;
+  maxVersion: number;
 };
 
 /**
@@ -88,24 +88,24 @@ export type AddonInfo = Message<"net.ankiweb.AddonInfo"> & {
   addonId?: number | undefined;
 
   /**
-   * @generated from field: optional string title = 2;
+   * @generated from field: string title = 2;
    */
-  title?: string | undefined;
+  title: string;
 
   /**
-   * @generated from field: optional string tags = 3;
+   * @generated from field: string tags = 3;
    */
-  tags?: string | undefined;
+  tags: string;
 
   /**
-   * @generated from field: optional string support_url = 4;
+   * @generated from field: string support_url = 4;
    */
-  supportUrl?: string | undefined;
+  supportUrl: string;
 
   /**
-   * @generated from field: optional string description = 5;
+   * @generated from field: string description = 5;
    */
-  description?: string | undefined;
+  description: string;
 
   /**
    * @generated from field: repeated net.ankiweb.AddonBranch branches = 6;
@@ -125,14 +125,14 @@ export const AddonInfoSchema: GenMessage<AddonInfo> = /*@__PURE__*/
  */
 export type AddonFile = Message<"net.ankiweb.AddonFile"> & {
   /**
-   * @generated from field: optional bytes zip_data = 1;
+   * @generated from field: bytes zip_data = 1;
    */
-  zipData?: Uint8Array | undefined;
+  zipData: Uint8Array;
 
   /**
-   * @generated from field: optional uint32 branch_index = 2;
+   * @generated from field: uint32 branch_index = 2;
    */
-  branchIndex?: number | undefined;
+  branchIndex: number;
 };
 
 /**
@@ -147,7 +147,7 @@ export const AddonFileSchema: GenMessage<AddonFile> = /*@__PURE__*/
  */
 export type UploadAddonRequest = Message<"net.ankiweb.UploadAddonRequest"> & {
   /**
-   * @generated from field: optional net.ankiweb.AddonInfo info = 1;
+   * @generated from field: net.ankiweb.AddonInfo info = 1;
    */
   info?: AddonInfo | undefined;
 
@@ -169,9 +169,9 @@ export const UploadAddonRequestSchema: GenMessage<UploadAddonRequest> = /*@__PUR
  */
 export type UploadAddonResponse = Message<"net.ankiweb.UploadAddonResponse"> & {
   /**
-   * @generated from field: optional uint32 addon_id = 1;
+   * @generated from field: uint32 addon_id = 1;
    */
-  addonId?: number | undefined;
+  addonId: number;
 };
 
 /**

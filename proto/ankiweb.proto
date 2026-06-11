@@ -20,29 +20,29 @@ message LoginResponse {
 }
 
 message AddonBranch {
-  optional uint32 min_version = 1;
-  optional int32 max_version = 2;
+  uint32 min_version = 1;
+  int32 max_version = 2;
 }
 
 message AddonInfo {
   optional uint32 addon_id = 1;
-  optional string title = 2;
-  optional string tags = 3;
-  optional string support_url = 4;
-  optional string description = 5;
+  string title = 2;
+  string tags = 3;
+  string support_url = 4;
+  string description = 5;
   repeated AddonBranch branches = 6;
 }
 
 message AddonFile {
-  optional bytes zip_data = 1;
-  optional uint32 branch_index = 2;
+  bytes zip_data = 1;
+  uint32 branch_index = 2;
 }
 
 message UploadAddonRequest {
-  optional AddonInfo info = 1;
+  AddonInfo info = 1;
   optional AddonFile file = 2;
 }
 
 message UploadAddonResponse {
-  optional uint32 addon_id = 1;
+  uint32 addon_id = 1;
 }
