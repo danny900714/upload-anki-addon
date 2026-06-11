@@ -3,7 +3,7 @@ import {
   AddonInfo,
   UploadAddonRequestSchema,
   UploadAddonResponseSchema,
-} from "./proto/ankiweb_pb.js";
+} from "./proto/ankiweb_pb";
 import { create, fromBinary, MessageInitShape, toBinary } from "@bufbuild/protobuf";
 import { GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { HeaderGenerator } from "header-generator";

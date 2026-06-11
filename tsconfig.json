@@ -4,6 +4,7 @@
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false,
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "noUnusedLocals": true
   }
