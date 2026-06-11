@@ -75,7 +75,8 @@ export default async function main() {
   const supportPage = core.getInput("support-page");
   const branchesInput = core.getMultilineInput("branches", { required: true });
   const addonFilesInput = core.getMultilineInput("addon-files", { required: true });
-  const description = core.getInput("description", { required: true });
+  const descriptionInput = core.getInput("description");
+  const descriptionFileInput = core.getInput("description-file");
 
   try {
     // Convert addonId
@@ -92,6 +93,7 @@ export default async function main() {
       return;
     }
 
+    // Convert and validate addon-files
     const addonFilesPath = addonFilesInput.map(parseAddonFile);
     if (addonFilesPath.length === 0) {
       core.setFailed("At least one add-on file path must be specified in addon-files.");
@@ -106,6 +108,30 @@ export default async function main() {
         "The number of path of addon-files should be the same as the number of branches.",
       );
       return;
+    }
+
+    // Get description
+    let description = descriptionInput;
+    if (description === "") {
+      if (descriptionFileInput === "") {
+        const message =
+          "Both description and description-file are not specified. Either one of them should be set.";
+        core.error(message);
+        core.setFailed(message);
+        return;
+      }
+
+      description = await fs.readFile(descriptionFileInput, "utf-8");
+      if (description === "") {
+        const message = "The content of description-file must not be empty.";
+        core.error(message);
+        core.setFailed(message);
+        return;
+      }
+    } else if (descriptionFileInput !== "") {
+      core.warning(
+        "Both description and description-file are specified. description will be used.",
+      );
     }
 
     // Login to get ankiweb cookie

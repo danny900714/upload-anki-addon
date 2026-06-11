@@ -50,8 +50,19 @@ inputs:
         path-to-addon-file.ankiaddon
     required: true
   description:
-    description: The description of the add-on. Markdown and basic HTML tags are supported.
-    required: true
+    description: >
+      The description of the add-on. Markdown and basic HTML tags are supported.
+
+      If both description and description-file are provided, description will take precedence.
+    required: false
+    default: ""
+  description-file:
+    description: >
+      The path to a text file containing the description of the add-on. Markdown and basic HTML tags are supported.
+
+      If both description and description-file are provided, description will take precedence.
+    required: false
+    default: ""
 outputs:
   addon-id:
     description: The add-on ID of the uploaded add-on. You can use this ID to update the add-on in the future.
