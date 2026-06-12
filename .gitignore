@@ -132,3 +132,6 @@ dist
 
 # WebStorm
 .idea
+
+# GitHub Actions
+!/dist/index.js
