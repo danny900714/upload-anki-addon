@@ -44321,7 +44321,7 @@ function parseBranchNotation(branch) {
 	for (let i = 0; i < versions.length; i++) {
 		let version = versions[i];
 		let includeFutureVersions = false;
-		if (i == version.length - 1 && version.endsWith("+")) {
+		if (i == versions.length - 1 && version.endsWith("+")) {
 			includeFutureVersions = true;
 			version.substring(0, version.length - 1);
 		}
@@ -44340,7 +44340,7 @@ function parseBranchNotation(branch) {
 				multiplier /= 100;
 			}
 		}
-		if (i == version.length - 1 && !includeFutureVersions) branchVersions[i] = -branchVersions[i];
+		if (i == versions.length - 1 && !includeFutureVersions) branchVersions[i] = -branchVersions[i];
 	}
 	return {
 		minVersion: branchVersions[0],

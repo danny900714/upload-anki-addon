@@ -17,7 +17,7 @@ function parseBranchNotation(branch: string): MessageInitShape<GenMessage<AddonB
     let version = versions[i];
 
     let includeFutureVersions = false;
-    if (i == version.length - 1 && version.endsWith("+")) {
+    if (i == versions.length - 1 && version.endsWith("+")) {
       includeFutureVersions = true;
       version.substring(0, version.length - 1);
     }
@@ -49,7 +49,7 @@ function parseBranchNotation(branch: string): MessageInitShape<GenMessage<AddonB
     }
 
     // If this is the max version without having +, negative the number.
-    if (i == version.length - 1 && !includeFutureVersions) {
+    if (i == versions.length - 1 && !includeFutureVersions) {
       branchVersions[i] = -branchVersions[i];
     }
   }
