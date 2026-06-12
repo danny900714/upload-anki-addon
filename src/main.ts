@@ -116,7 +116,6 @@ export default async function main() {
       if (descriptionFileInput === "") {
         const message =
           "Both description and description-file are not specified. Either one of them should be set.";
-        core.error(message);
         core.setFailed(message);
         return;
       }
@@ -124,7 +123,6 @@ export default async function main() {
       description = await fs.readFile(descriptionFileInput, "utf-8");
       if (description === "") {
         const message = "The content of description-file must not be empty.";
-        core.error(message);
         core.setFailed(message);
         return;
       }
@@ -188,7 +186,6 @@ export default async function main() {
     // Set output
     core.setOutput("addon-id", addonId);
   } catch (error) {
-    core.error(error as Error);
     core.setFailed(error as Error);
     return;
   }
