@@ -31,6 +31,7 @@ jobs:
         id: test-action
         uses: ./
         with:
+          addon-id: ${{ vars.ADDON_ID }}
           username: ${{ secrets.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
           title: "Test for @danny900714/upload-anki-addon"
@@ -40,7 +41,13 @@ jobs:
             2.1.1-23.12
           addon-files: |
             test-addon-1.ankiaddon
-          description: This is a test add-on uploaded by GitHub Actions workflow.
+          description: |
+            This is a test add-on uploaded by GitHub Actions workflow.
+
+            Repository: ${{ github.server_url }}/${{ github.respository}}
+            Triggering event: ${{ github.event_name }}
+            Branch: ${{ github.ref_name }}
+            GitHub Actions Job URL: ${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}
 
       - name: Print output
         run: echo "${{ steps.test-action.outputs.addon-id }}"

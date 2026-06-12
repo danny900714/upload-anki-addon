@@ -186,7 +186,7 @@ export default async function main() {
     // Set output
     core.setOutput("addon-id", addonId);
   } catch (error) {
-    if (error instanceof HTTPStatusError) error.message += `Body: ${await error.response.text()}`;
+    if (error instanceof HTTPStatusError) error.message += `\nBody: ${await error.response.text()}`;
     core.setFailed(error as Error);
   }
 }
