@@ -3,7 +3,7 @@ import * as core from "@actions/core";
 import { MessageInitShape } from "@bufbuild/protobuf";
 import { GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { AddonBranch } from "./proto/ankiweb_pb";
-import { login, uploadAddon } from "./ankiweb";
+import { HTTPStatusError, login, uploadAddon } from "./ankiweb";
 
 function parseBranchNotation(branch: string): MessageInitShape<GenMessage<AddonBranch>> {
   const branchVersions: [number, number] = [0, 0];
@@ -186,7 +186,7 @@ export default async function main() {
     // Set output
     core.setOutput("addon-id", addonId);
   } catch (error) {
+    if (error instanceof HTTPStatusError) error.message += `Body: ${await error.response.text()}`;
     core.setFailed(error as Error);
-    return;
   }
 }
