@@ -16,9 +16,9 @@ function parseBranchNotation(branch: string): MessageInitShape<GenMessage<AddonB
   for (let i = 0; i < versions.length; i++) {
     let version = versions[i];
 
-    let includeFutureVersions = true;
-    if (i == version.length - 1 && !version.endsWith("+")) {
-      includeFutureVersions = false;
+    let includeFutureVersions = false;
+    if (i == version.length - 1 && version.endsWith("+")) {
+      includeFutureVersions = true;
       version.substring(0, version.length - 1);
     }
 

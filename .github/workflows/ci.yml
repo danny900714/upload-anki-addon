@@ -20,9 +20,11 @@ jobs:
       - name: Generate test addon
         run: |
           mkdir -p test-addon
-          echo "EVENT_NAME = ${{ github.event_name }}\n" >> test-addon/__init__.py
-          echo "REF = ${{ github.ref_name }}\n" >> test-addon/__init__.py
-          echo "JOB_URL = ${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}" >> test-addon/__init__.py
+          echo "from aqt.utils import showInfo" > test-addon/__init__.py
+          echo "EVENT_NAME = '${{ github.event_name }}'" >> test-addon/__init__.py
+          echo "REF = '${{ github.ref_name }}'" >> test-addon/__init__.py
+          echo "JOB_URL = '${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}'" >> test-addon/__init__.py
+          echo "showInfo(f'Event name: {EVENT_NAME}\nBranch: {REF}\nGitHub Actions Job URL: {JOB_URL}')" >> test-addon/__init__.py
           cd test-addon && zip -r ../test-addon-1.ankiaddon *
 
       - name: Test action
