@@ -44389,16 +44389,12 @@ async function main() {
 		let description = descriptionInput;
 		if (description === "") {
 			if (descriptionFileInput === "") {
-				const message = "Both description and description-file are not specified. Either one of them should be set.";
-				error(message);
-				setFailed(message);
+				setFailed("Both description and description-file are not specified. Either one of them should be set.");
 				return;
 			}
 			description = await fs.readFile(descriptionFileInput, "utf-8");
 			if (description === "") {
-				const message = "The content of description-file must not be empty.";
-				error(message);
-				setFailed(message);
+				setFailed("The content of description-file must not be empty.");
 				return;
 			}
 		} else if (descriptionFileInput !== "") warning("Both description and description-file are specified. description will be used.");
@@ -44435,10 +44431,9 @@ async function main() {
 			}
 		}
 		setOutput("addon-id", addonId);
-	} catch (error$1) {
-		error(error$1);
-		setFailed(error$1);
-		return;
+	} catch (error) {
+		if (error instanceof HTTPStatusError) error.message += `Body: ${await error.response.text()}`;
+		setFailed(error);
 	}
 }
 //#endregion
