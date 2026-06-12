@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-action:
+    name: GitHub Actions Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Generate test addon
+        run: |
+          mkdir -p test-addon
+          echo "EVENT_NAME = ${{ github.event_name }}\n" >> test-addon/__init__.py
+          echo "REF = ${{ github.ref_name }}\n" >> test-addon/__init__.py
+          echo "JOB_URL = ${{ format('{0}{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}" >> test-addon/__init__.py
+          cd test-addon && zip -r ../test-addon-1.ankiaddon *
+
+      - name: Test action
+        id: test-action
+        uses: ./
+        with:
+          username: ${{ secrets.ANKIWEB_USERNAME }}
+          password: ${{ secrets.ANKIWEB_PASSWORD }}
+          title: "Test for @danny900714/upload-anki-addon"
+          tags: "github action test upload"
+          support-page: "https://github.com/danny900714/upload-anki-addon"
+          branches: |
+            2.1.1-23.12
+          addon-files: |
+            test-addon-1.ankiaddon
+          description: |
+            This is a test add-on uploaded by GitHub Actions workflow.
+
+             - Event name: ${{ github.event_name }}
+             - Ref: ${{ github.ref_name }}
+             - Job URL: ${{ format('{0}{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}
+
+      - name: Print output
+        run: echo "${{ steps.test-action.outputs.addon-id }}"
