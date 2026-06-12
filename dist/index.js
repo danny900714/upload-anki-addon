@@ -44320,9 +44320,9 @@ function parseBranchNotation(branch) {
 	if (versions.length !== 2) throw new Error(`The branch must have 2 versions separated by dash. branch: ${branch}`);
 	for (let i = 0; i < versions.length; i++) {
 		let version = versions[i];
-		let includeFutureVersions = true;
-		if (i == version.length - 1 && !version.endsWith("+")) {
-			includeFutureVersions = false;
+		let includeFutureVersions = false;
+		if (i == version.length - 1 && version.endsWith("+")) {
+			includeFutureVersions = true;
 			version.substring(0, version.length - 1);
 		}
 		if (version.startsWith("2.1.")) {
@@ -44432,7 +44432,7 @@ async function main() {
 		}
 		setOutput("addon-id", addonId);
 	} catch (error) {
-		if (error instanceof HTTPStatusError) error.message += `Body: ${await error.response.text()}`;
+		if (error instanceof HTTPStatusError) error.message += `\nBody: ${await error.response.text()}`;
 		setFailed(error);
 	}
 }
