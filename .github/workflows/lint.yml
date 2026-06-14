@@ -1,0 +1,21 @@
+name: lint.yml
+on:
+  push:
+    branches:
+      - ci
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+      - name: Check formatting
+        run: pnpm format:check
