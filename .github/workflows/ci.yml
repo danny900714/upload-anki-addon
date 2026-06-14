@@ -68,7 +68,7 @@ jobs:
           description: |
             This is a test add-on uploaded by GitHub Actions workflow.
               
-            **Repository:** ${{ format('{0}/{1}', github.server_url, github.repository) }}  
+            **Repository:** [${{ format('{0}/{1}', github.server_url, github.repository) }}](${{ format('{0}/{1}', github.server_url, github.repository) }})  
             **Triggering event:** ${{ github.event_name }}  
             **Branch:** ${{ github.ref_name }}  
             **Commit:** ${{ github.sha }}  
