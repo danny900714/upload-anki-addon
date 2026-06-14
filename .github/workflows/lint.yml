@@ -17,5 +17,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Setup project
         uses: ./.github/actions/setup-project
+      - name: Lint
+        run: pnpm lint:github
       - name: Check formatting
         run: pnpm format:check

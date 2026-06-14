@@ -10,6 +10,8 @@
     "generate": "buf generate",
     "build": "rolldown -c",
     "test": "vitest",
+    "lint": "oxlint",
+    "lint:github": "oxlint --format=github",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },
@@ -25,6 +27,8 @@
     "@types/node": "^25.9.3",
     "memfs": "^4.57.7",
     "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
+    "oxlint-tsgolint": "^0.23.0",
     "rolldown": "^1.1.1",
     "vitest": "^4.1.8"
   },
