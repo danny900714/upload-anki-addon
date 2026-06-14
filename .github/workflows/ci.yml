@@ -8,15 +8,40 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
-  test-action:
-    name: GitHub Actions Test
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test
+        env:
+          ANKIWEB_ADDON_ID: ${{ vars.INTEGRATION_TEST_ADDON_ID }}
+          ANKIWEB_COOKIE: ${{ secrets.ANKIWEB_COOKIE }}
+          ANKIWEB_USERNAME: ${{ secrets.ANKIWEB_USERNAME }}
+          ANKIWEB_PASSWORD: ${{ secrets.ANKIWEB_PASSWORD }}
 
+  test-action:
+    name: GitHub Actions Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
       - name: Generate test addon
         run: |
           mkdir -p test-addon
@@ -26,7 +51,6 @@ jobs:
           echo "JOB_URL = '${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}'" >> test-addon/__init__.py
           echo "showInfo(f'Event name: {EVENT_NAME}\nBranch: {REF}\nGitHub Actions Job URL: {JOB_URL}')" >> test-addon/__init__.py
           cd test-addon && zip -r ../test-addon-1.ankiaddon *
-
       - name: Test action
         id: test-action
         uses: ./
@@ -38,16 +62,16 @@ jobs:
           tags: "github action test upload"
           support-page: "https://github.com/danny900714/upload-anki-addon"
           branches: |
-            2.1.1-23.12
+            2.1.1-25.09.4+
           addon-files: |
             test-addon-1.ankiaddon
           description: |
             This is a test add-on uploaded by GitHub Actions workflow.
-
-            **Repository:** ${{ github.server_url }}/${{ github.respository}}  
+              
+            **Repository:** [${{ format('{0}/{1}', github.server_url, github.repository) }}](${{ format('{0}/{1}', github.server_url, github.repository) }})  
             **Triggering event:** ${{ github.event_name }}  
             **Branch:** ${{ github.ref_name }}  
-            **GitHub Actions Job URL:** ${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}
-
+            **Commit:** ${{ github.sha }}  
+            **GitHub Actions Job URL:** [${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }}](${{ format('{0}/{1}/actions/runs/{2}/job/{3}', github.server_url, github.repository, github.run_id, job.check_run_id) }})
       - name: Print output
         run: echo "${{ steps.test-action.outputs.addon-id }}"

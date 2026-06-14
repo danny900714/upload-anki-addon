@@ -22,9 +22,10 @@
     "@bufbuild/buf": "^1.70.0",
     "@bufbuild/protoc-gen-es": "^2.12.0",
     "@tsconfig/node24": "^24.0.4",
-    "@types/node": "^25.9.2",
+    "@types/node": "^25.9.3",
+    "memfs": "^4.57.7",
     "oxfmt": "^0.54.0",
-    "rolldown": "^1.1.0",
+    "rolldown": "^1.1.1",
     "vitest": "^4.1.8"
   },
   "devEngines": {
@@ -32,6 +33,14 @@
       "name": "pnpm",
       "version": "^11.5.2",
       "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^24.16.0",
+      "onFail": "warn"
     }
+  },
+  "engines": {
+    "node": "^24.16.0"
   }
 }
