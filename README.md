@@ -135,18 +135,18 @@ The following inputs can be used as `step.with` keys:
 >   23.10-25.09.4+
 > ```
 
-| Name               | Type     | Required | Description                                                                                                                                                                                                               |
-| ------------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `username`         | `String` | `true`   | AnkiWeb username.                                                                                                                                                                                                         |
-| `password`         | `String` | `true`   | AnkiWeb password.                                                                                                                                                                                                         |
-| `addon-id`         | `String` | `false`  | The download code for the add-on. Omit this when uploading a new add-on.                                                                                                                                                  |
-| `title`            | `String` | `true`   | The title of the add-on. Must be fewer than 80 characters.                                                                                                                                                                |
-| `tags`             | `String` | `false`  | Space-separated tags for this add-on.                                                                                                                                                                                     |
-| `support-page`     | `String` | `false`  | A bug tracker, forum link, or other page where users can reach you. Must start with http.                                                                                                                                 |
-| `branches`         | `List`   | `true`   | A list of Anki version branches that your add-on supports. Each branch must be in the format `min-max`, where `min` and `max` are Anki versions. Use `+` for the max version to indicate support for all future versions. |
-| `addon-files`      | `List`   | `true`   | A list of add-on files to upload, in the same order as `branches`. Use `-` to skip updating the add-on file for a branch.                                                                                                 |
-| `description`      | `String` | `false`  | The description of the add-on. Markdown and basic HTML are supported.                                                                                                                                                     |
-| `description-file` | `String` | `false`  | Path to a file containing the add-on description. Markdown and basic HTML are supported. Ignored if `description` is also provided.                                                                                       |
+| Name               | Type   | Required | Description                                                                                                                                                                                                               |
+| ------------------ | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `username`         | String | true     | AnkiWeb username.                                                                                                                                                                                                         |
+| `password`         | String | true     | AnkiWeb password.                                                                                                                                                                                                         |
+| `addon-id`         | String | false    | The download code for the add-on. Omit this when uploading a new add-on.                                                                                                                                                  |
+| `title`            | String | true     | The title of the add-on. Must be fewer than 80 characters.                                                                                                                                                                |
+| `tags`             | String | false    | Space-separated tags for this add-on.                                                                                                                                                                                     |
+| `support-page`     | String | false    | A bug tracker, forum link, or other page where users can reach you. Must start with http.                                                                                                                                 |
+| `branches`         | List   | true     | A list of Anki version branches that your add-on supports. Each branch must be in the format `min-max`, where `min` and `max` are Anki versions. Use `+` for the max version to indicate support for all future versions. |
+| `addon-files`      | List   | true     | A list of add-on files to upload, in the same order as `branches`. Use `-` to skip updating the add-on file for a branch.                                                                                                 |
+| `description`      | String | false    | The description of the add-on. Markdown and basic HTML are supported.                                                                                                                                                     |
+| `description-file` | String | false    | Path to a file containing the add-on description. Markdown and basic HTML are supported. Ignored if `description` is also provided.                                                                                       |
 
 > [!NOTE]
 >
@@ -157,6 +157,6 @@ The following inputs can be used as `step.with` keys:
 
 The following outputs can be accessed via `${{ steps.<step-id>.outputs }}`:
 
-| Name       | Type     | Description                          |
-| ---------- | -------- | ------------------------------------ |
-| `addon-id` | `String` | The id for the uploaded Anki add-on. |
+| Name       | Type   | Description                          |
+| ---------- | ------ | ------------------------------------ |
+| `addon-id` | String | The id for the uploaded Anki add-on. |
