@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/danny900714/upload-anki-addon/actions/workflows/ci.yml/badge.svg)](https://github.com/danny900714/upload-anki-addon/actions/workflows/ci.yml)
 
-A GitHub Action for uploading an Anki add-on to AnkiWeb.
+A GitHub Action for uploading an [Anki](https://apps.ankiweb.net/) add-on to [AnkiWeb](https://ankiweb.net/shared/addons).
 
 ## Features
 
