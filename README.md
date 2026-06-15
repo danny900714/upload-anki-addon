@@ -11,6 +11,8 @@ A GitHub Action for uploading an Anki add-on to AnkiWeb.
 
 ### Upload a new add-on to AnkiWeb
 
+If `addon-id` is not provided, a new add-on will be created on AnkiWeb.
+
 Specify the Anki versions your add-on supports using the `branches` parameter.
 Use the `+` symbol for the max version to indicate that your add-on supports all future versions as well.
 
@@ -71,6 +73,7 @@ jobs:
         with:
           username: ${{ vars.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
+          addon-id: 12345678
           title: My Anki add-on
           description-file: README.md
           branches: 2.1.1-25.09.4+
@@ -107,6 +110,7 @@ jobs:
         with:
           username: ${{ vars.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
+          addon-id: 12345678
           title: My Anki add-on
           description: Description for my Anki add-on
           branches: |
