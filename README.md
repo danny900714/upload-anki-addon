@@ -37,7 +37,7 @@ jobs:
       - name: Package add-on
         run: cd src/my-addon && zip -r ../../my-addon.ankiaddon *
       - name: Upload add-on to AnkiWeb
-        uses: danny900714/upload-anki-addon@v0
+        uses: danny900714/upload-anki-addon@v1
         with:
           username: ${{ vars.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
@@ -71,7 +71,7 @@ jobs:
       - name: Package add-on
         run: cd src/my-addon && zip -r ../../my-addon.ankiaddon *
       - name: Upload add-on to AnkiWeb
-        uses: danny900714/upload-anki-addon@v0
+        uses: danny900714/upload-anki-addon@v1
         with:
           username: ${{ vars.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
@@ -108,7 +108,7 @@ jobs:
       - name: Package add-on for second branch
         run: cd src/second-branch && zip -r ../../second-branch.ankiaddon *
       - name: Upload add-on to AnkiWeb
-        uses: danny900714/upload-anki-addon@v0
+        uses: danny900714/upload-anki-addon@v1
         with:
           username: ${{ vars.ANKIWEB_USERNAME }}
           password: ${{ secrets.ANKIWEB_PASSWORD }}
