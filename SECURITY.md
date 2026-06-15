@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest minor releases are supported. Users of this project are encouraged to upgrade to latest version. 
+Only the latest minor releases are supported. Users of this project are encouraged to upgrade to latest version.
 
 | Version        | Supported          |
 | -------------- | ------------------ |
