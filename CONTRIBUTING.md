@@ -5,7 +5,7 @@
 Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
 
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [AI/LLM Contributions Policy](#ai-llm-contributions-policy)
+- [AI/LLM Contributions Policy](#aillm-contributions-policy)
 
 ## AI/LLM Contributions Policy
 
