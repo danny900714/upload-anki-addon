@@ -6,32 +6,32 @@ branding:
   color: blue
 inputs:
   username:
-    description: Your AnkiWeb account username. You can also set this as a secret and reference it in the workflow.
+    description: Your AnkiWeb username.
     required: true
   password:
-    description: Your AnkiWeb account password. You can also set this as a secret and reference it in the workflow.
+    description: Your AnkiWeb password.
     required: true
   addon-id:
-    description: The add-on ID (install code) of the add-on you want to update. If not provided, a new add-on will be created.
+    description: The download code for the add-on. If not provided, a new add-on will be created.
     required: false
     default: ""
   title:
-    description: The title of the add-on. A one-line description, less than 80 characters.
+    description: The title of the add-on. Must be fewer than 80 characters.
     required: true
   tags:
-    description: The tags of the add-on. Space-separated.
+    description: Space-separated tags for this add-on.
     required: false
     default: ""
   support-page:
-    description: A bug tracker, forum link, or some other webpage users can contact you. Must start with http.
+    description: A bug tracker, forum link, or other page where users can reach you. Must start with http.
     required: false
     default: ""
   branches:
     description: >
-      A list of branch notations separated by newline.
+      A list of branch notations, one per line.
 
       The branch notation is defined as <start-version>-<end-version>(+),
-      where <start-version> and <end-version> are Anki version numbers, 
+      where <start-version> and <end-version> are Anki version numbers,
       and the optional + means the add-on is compatible with all future versions after <end-version>.
 
       For example,
@@ -40,25 +40,25 @@ inputs:
     required: true
   addon-files:
     description: >
-      A list of paths to add-on file separated by newline.
+      A list of paths to add-on files, one per line.
 
-      The number of paths must be the same as the number of branches, and the order must correspond to each other.
-      If there's a branch you don't want to upload addon file, you can put a dash (-) in the corresponding line.
+      The number of paths must match the number of branches, and the order must correspond to each other.
+      To skip uploading an add-on file for a branch, use a dash (-) on the corresponding line.
 
-      For example, if you want to upload addon file for the second branch but not the first branch, you can set addon-files like this:
+      For example, to upload an add-on file for the second branch but not the first:
         -
         path-to-addon-file.ankiaddon
     required: true
   description:
     description: >
-      The description of the add-on. Markdown and basic HTML tags are supported.
+      The description of the add-on. Markdown and basic HTML are supported.
 
       If both description and description-file are provided, description will take precedence.
     required: false
     default: ""
   description-file:
     description: >
-      The path to a text file containing the description of the add-on. Markdown and basic HTML tags are supported.
+      Path to a file containing the add-on description. Markdown and basic HTML are supported.
 
       If both description and description-file are provided, description will take precedence.
     required: false
