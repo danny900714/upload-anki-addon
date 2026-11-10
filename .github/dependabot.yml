@@ -11,6 +11,9 @@ updates:
       interval: weekly
     assignees:
       - danny900714
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       npm-minor:
         update-types: [minor, patch]
