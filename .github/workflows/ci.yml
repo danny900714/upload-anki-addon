@@ -1,3 +1,4 @@
+#file: noinspection UndefinedParamsPresent,UndefinedAction
 name: CI
 
 on:
@@ -18,9 +19,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.1.0
       - name: Setup project
-        uses: ./.github/actions/setup-project
+        uses: $/.github/actions/setup-project
       - name: Generate protobuf
         run: pnpm generate
       - name: Build dist/ Directory
@@ -44,7 +45,7 @@ jobs:
       # workflow artifact.
       - if: ${{ failure() && steps.diff.outcome == 'failure' }}
         name: Upload Artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: dist
           path: dist/
@@ -55,9 +56,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.1.0
       - name: Setup project
-        uses: ./.github/actions/setup-project
+        uses: $/.github/actions/setup-project
       - name: Lint
         run: pnpm lint:github
       - name: Check formatting
@@ -69,9 +70,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.1.0
       - name: Setup project
-        uses: ./.github/actions/setup-project
+        uses: $/.github/actions/setup-project
       - name: Run tests
         run: pnpm test
         env:
@@ -85,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.1.0
       - name: Generate test addon
         run: |
           mkdir -p test-addon
@@ -97,7 +98,7 @@ jobs:
           cd test-addon && zip -r ../test-addon-1.ankiaddon *
       - name: Test action
         id: test-action
-        uses: ./
+        uses: $/
         with:
           addon-id: ${{ vars.ADDON_ID }}
           username: ${{ secrets.ANKIWEB_USERNAME }}
