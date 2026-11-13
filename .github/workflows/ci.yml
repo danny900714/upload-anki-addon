@@ -73,8 +73,13 @@ jobs:
         uses: actions/checkout@v7.0.1
       - name: Setup project
         uses: $/.github/actions/setup-project
-      - name: Run tests
-        run: pnpm test
+      - name: Run unit tests
+        run: pnpm test --tags-filter='!integration'
+      - name: Run integration tests
+        if: &has-secret-access >
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          github.actor != 'dependabot[bot]'
+        run: pnpm test --tags-filter='integration'
         env:
           ANKIWEB_ADDON_ID: ${{ vars.INTEGRATION_TEST_ADDON_ID }}
           ANKIWEB_COOKIE: ${{ secrets.ANKIWEB_COOKIE }}
@@ -84,6 +89,8 @@ jobs:
   test-action:
     name: GitHub Actions Test
     runs-on: ubuntu-latest
+    if: *has-secret-access
+
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
