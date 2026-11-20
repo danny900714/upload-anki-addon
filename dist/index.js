@@ -6135,7 +6135,7 @@ var require_client_h2$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		});
 		return {
 			version: "h2",
-			defaultPipelining: Infinity,
+			defaultPipelining: 1e400,
 			write(...args) {
 				return writeH2(client, ...args);
 			},
@@ -9524,7 +9524,7 @@ var require_pending_interceptors_formatter$1 = /* @__PURE__ */ __commonJSMin(((e
 				"Status code": statusCode,
 				Persistent: persist ? PERSISTENT : NOT_PERSISTENT,
 				Invocations: timesInvoked,
-				Remaining: persist ? Infinity : times - timesInvoked
+				Remaining: persist ? 1e400 : times - timesInvoked
 			}));
 			this.logger.table(withPrettyHeaders);
 			return this.transform.read().toString();
@@ -9974,7 +9974,7 @@ var require_dns$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			pick: interceptorOpts?.pick ?? null,
 			dualStack,
 			affinity,
-			maxItems: interceptorOpts?.maxItems ?? Infinity
+			maxItems: interceptorOpts?.maxItems ?? 1e400
 		});
 		return (dispatch) => {
 			return function dnsInterceptor(origDispatchOpts, handler) {
@@ -13055,7 +13055,7 @@ var require_cache$3 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			}
 			return true;
 		}
-		#internalMatchAll(request, options, maxResponses = Infinity) {
+		#internalMatchAll(request, options, maxResponses = 1e400) {
 			let r = null;
 			if (request !== void 0) {
 				if (request instanceof Request) {
@@ -17173,6 +17173,7 @@ function getTextEncoding() {
 			},
 			checkUtf8(text) {
 				try {
+					encodeURIComponent(text);
 					return true;
 				} catch (_) {
 					return false;
@@ -32399,7 +32400,7 @@ var require_client_h2 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		socket.on("close", onSocketClose);
 		return {
 			version: "h2",
-			defaultPipelining: Infinity,
+			defaultPipelining: 1e400,
 			/**
 			* @param {import('../core/request.js')} request
 			* @returns {boolean}
@@ -34344,7 +34345,7 @@ var require_agent = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		return opts && opts.connections === 1 ? new Client(origin, opts) : new Pool(origin, opts);
 	}
 	var Agent = class extends DispatcherBase {
-		constructor({ factory = defaultFactory, maxOrigins = Infinity, connect, tls, ...options } = {}) {
+		constructor({ factory = defaultFactory, maxOrigins = 1e400, connect, tls, ...options } = {}) {
 			if (typeof factory !== "function") throw new InvalidArgumentError("factory must be a function.");
 			if (connect != null && typeof connect !== "function" && typeof connect !== "object") throw new InvalidArgumentError("connect must be a function or an object");
 			if (typeof maxOrigins !== "number" || Number.isNaN(maxOrigins) || maxOrigins <= 0) throw new InvalidArgumentError("maxOrigins must be a number greater than 0");
@@ -38131,7 +38132,7 @@ var require_pending_interceptors_formatter = /* @__PURE__ */ __commonJSMin(((exp
 				"Status code": statusCode,
 				Persistent: persist ? PERSISTENT : NOT_PERSISTENT,
 				Invocations: timesInvoked,
-				Remaining: persist ? Infinity : times - timesInvoked
+				Remaining: persist ? 1e400 : times - timesInvoked
 			}));
 			this.logger.table(withPrettyHeaders);
 			return this.transform.read().toString();
@@ -38602,7 +38603,7 @@ var require_snapshot_recorder = /* @__PURE__ */ __commonJSMin(((exports, module)
 		/** @type {string|undefined} */
 		#snapshotPath;
 		/** @type {number} */
-		#maxSnapshots = Infinity;
+		#maxSnapshots = 1e400;
 		/** @type {boolean} */
 		#autoFlush = false;
 		/** @type {import('./snapshot-utils').HeaderFilters} */
@@ -38613,7 +38614,7 @@ var require_snapshot_recorder = /* @__PURE__ */ __commonJSMin(((exports, module)
 		*/
 		constructor(options = {}) {
 			this.#snapshotPath = options.snapshotPath;
-			this.#maxSnapshots = options.maxSnapshots || Infinity;
+			this.#maxSnapshots = options.maxSnapshots || 1e400;
 			this.#autoFlush = options.autoFlush || false;
 			this.flushInterval = options.flushInterval || 3e4;
 			this._flushTimer = null;
@@ -39875,7 +39876,7 @@ var require_dns = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			pick: interceptorOpts?.pick ?? null,
 			dualStack,
 			affinity,
-			maxItems: interceptorOpts?.maxItems ?? Infinity,
+			maxItems: interceptorOpts?.maxItems ?? 1e400,
 			storage: interceptorOpts?.storage
 		});
 		return (dispatch) => {
@@ -41234,7 +41235,7 @@ var require_cache_handler = /* @__PURE__ */ __commonJSMin(((exports, module) => 
 	* @returns {{ staleAt: number, requiresRevalidation: boolean } | undefined}
 	*/
 	function getRedirectPolicy(cacheType, method, redirectHops, reqHeaders, cacheByDefault, now) {
-		let staleAt = Infinity;
+		let staleAt = 1e400;
 		let requiresRevalidation = false;
 		for (const hop of redirectHops) {
 			const hopPolicy = getRedirectHopPolicy(cacheType, method, hop, reqHeaders, cacheByDefault);
@@ -41369,13 +41370,13 @@ var require_cache_handler = /* @__PURE__ */ __commonJSMin(((exports, module) => 
 	* @param {number} staleAt
 	*/
 	function determineDeleteAt(baseTime, cachedAt, cacheControlDirectives, staleAt) {
-		let staleWhileRevalidate = -Infinity;
-		let staleIfError = -Infinity;
-		let immutable = -Infinity;
+		let staleWhileRevalidate = -1e400;
+		let staleIfError = -1e400;
+		let immutable = -1e400;
 		if (cacheControlDirectives["stale-while-revalidate"]) staleWhileRevalidate = staleAt + cacheControlDirectives["stale-while-revalidate"] * 1e3;
 		if (cacheControlDirectives["stale-if-error"]) staleIfError = staleAt + cacheControlDirectives["stale-if-error"] * 1e3;
-		if (cacheControlDirectives.immutable && staleWhileRevalidate === -Infinity && staleIfError === -Infinity) immutable = cachedAt + 31536e6;
-		if (staleWhileRevalidate === -Infinity && staleIfError === -Infinity && immutable === -Infinity) {
+		if (cacheControlDirectives.immutable && staleWhileRevalidate === -1e400 && staleIfError === -1e400) immutable = cachedAt + 31536e6;
+		if (staleWhileRevalidate === -1e400 && staleIfError === -1e400 && immutable === -1e400) {
 			const freshnessLifetime = staleAt - baseTime;
 			if (freshnessLifetime <= 0) return cachedAt + REVALIDATION_ONLY_RETENTION;
 			const datePrecisionPadding = Math.min(Math.max(cachedAt - baseTime, 0), 1e3);
@@ -41527,7 +41528,7 @@ var require_memory_cache_store = /* @__PURE__ */ __commonJSMin(((exports, module
 					if (entries) store.#entries.delete(topLevelKey);
 					else entries = [];
 					store.#entries.set(topLevelKey, entries);
-					const previousEntry = findEntry(key, entries, -Infinity);
+					const previousEntry = findEntry(key, entries, -1e400);
 					if (previousEntry) {
 						const index = entries.indexOf(previousEntry);
 						entries.splice(index, 1, entry);
@@ -43036,7 +43037,7 @@ var require_sqlite_cache_store = /* @__PURE__ */ __commonJSMin(((exports, module
 	*/
 	module.exports = class SqliteCacheStore {
 		#maxEntrySize = MAX_ENTRY_SIZE;
-		#maxCount = Infinity;
+		#maxCount = 1e400;
 		#compressThreshold = COMPRESS_THRESHOLD;
 		/**
 		* @type {import('node:sqlite').DatabaseSync}
@@ -43178,7 +43179,7 @@ var require_sqlite_cache_store = /* @__PURE__ */ __commonJSMin(((exports, module
 			this.#deleteByUrlQuery = this.#db.prepare(`DELETE FROM cacheInterceptorV${VERSION} WHERE url = ?`);
 			this.#countEntriesQuery = this.#db.prepare(`SELECT COUNT(*) AS total FROM cacheInterceptorV${VERSION}`);
 			this.#deleteExpiredValuesQuery = this.#db.prepare(`DELETE FROM cacheInterceptorV${VERSION} WHERE deleteAt <= ?`);
-			this.#deleteOldValuesQuery = this.#maxCount === Infinity ? null : this.#db.prepare(`
+			this.#deleteOldValuesQuery = this.#maxCount === 1e400 ? null : this.#db.prepare(`
         DELETE FROM cacheInterceptorV${VERSION}
         WHERE id IN (
           SELECT
@@ -46125,7 +46126,7 @@ var require_cache = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			}
 			return true;
 		}
-		#internalMatchAll(request, options, maxResponses = Infinity) {
+		#internalMatchAll(request, options, maxResponses = 1e400) {
 			let r = null;
 			if (request !== void 0) {
 				if (webidl.is.Request(request)) {
@@ -49617,6 +49618,7 @@ var require_eventsource = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 }));
 // src/ankiweb.ts
 var import_undici = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
+	var __filename = import.meta.filename;
 	const Client = require_client();
 	const Dispatcher = require_dispatcher();
 	const Pool = require_pool();
